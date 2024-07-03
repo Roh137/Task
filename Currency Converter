@@ -1,0 +1,47 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+
+public class SimpleCurrencyConverter {
+
+private static final Map<String, Double> exchange Rates = new HashMap<>();
+
+static {
+// Hardcoded exchange rates
+exchangeRates.put(key: "USD_EUR", value: 0.85); exchangeRates.put(key: "EUR_USD", value: 1.18); exchangeRates.put(key: "USD_GBP", value:0.75); exchangeRates.put(key: "GBP_USD", value: 1.33); exchangeRates.put(key: "USD_INR", value: 73.50); exchangeRates.put(key: "INR_USD", value: 0.014);
+// Add more rates as needed
+}
+public static void main(String[] args) throws IOException {
+BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+
+// Select base currency
+System.out.print(s: "Enter base currency (e.g., USD): "); 
+String baseCurrency = reader.readLine().toUpperCase();
+
+// Select target currency
+System.out.print(s: "Enter target currency (e.g., EUR): "); String targetCurrency = reader.readLine().toUpperCase();
+
+// Input amount to convert
+System.out.print(s: "Enter amount to convert: ");
+double amount = Double.parseDouble(reader.readLine());
+
+// Convert currency
+double converted Amount = convert Currency (baseCurrency, targetCurrency, amount);
+
+// Display the converted amount
+System.out.printf(format: "Converted Amount: %.2f %s\n", convertedAmount, targetCurrency);
+
+Private static double convertCurrency (String baseCurrency, String targetCurrency, double amount)
+String key = baseCurrency + "_" + targetCurrency;
+if (exchangeRates.containsKey(key)) {
+return amount * exchange Rates.get(key);
+} else {
+
+System.out.println(x: "Exchange rate not available for the selected currency pair.");
+return 0;
+}
+}
+}
